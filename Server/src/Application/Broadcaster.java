@@ -1,12 +1,14 @@
 package Application;
 
 import Config.Constants;
+import org.classpath.icedtea.Config;
 
 import java.io.IOException;
 import java.net.*;
 
 public class Broadcaster {
-    private DatagramSocket socket;
+    private MulticastSocket socket;
+    private InetAddress groupAddress;
 
     private static Broadcaster ourInstance = new Broadcaster();
 
@@ -16,18 +18,19 @@ public class Broadcaster {
 
     private Broadcaster() {
         try {
-            this.socket = new DatagramSocket(Constants.PORT);
-        } catch (SocketException e) {
+            this.socket = new MulticastSocket(5003);
+            groupAddress = InetAddress.getByName("224.0.0.1");
+            socket.joinGroup(groupAddress);
+        } catch (IOException e) {
             e.printStackTrace();
             System.exit(500);
         }
     }
 
     public void broadcast(String message){
-        byte[] buffer = new byte[512];
-        DatagramPacket packet = null;
+        DatagramPacket packet;
         try {
-            packet = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(Constants.IP_ADDR), Constants.PORT);
+            packet = new DatagramPacket(message.getBytes(), message.getBytes().length, groupAddress, 6003);
             socket.send(packet);
         } catch (IOException ignore) {}
     }

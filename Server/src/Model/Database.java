@@ -26,13 +26,6 @@ public class Database implements Serializable {
         return users;
     }
 
-    public User findUserByName(String name) {
-        for (User user: users) {
-            if (user.getUsername().equals(name)) return user;
-        }
-        return null;
-    }
-
     public void addQuestion(Question question) {
         this.questions.add(question);
     }

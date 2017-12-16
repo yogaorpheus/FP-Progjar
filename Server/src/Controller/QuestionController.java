@@ -8,8 +8,8 @@ import java.util.*;
 public class QuestionController {
     public static void handleFormAddQuestion(String questionText, String answers) {
         questionText = questionText.trim();
-        answers = answers.trim();
-        List<String> answerList = Collections.singletonList(answers);
+        String[] answersArr = answers.trim().split(";");
+        List<String> answerList = new ArrayList<>(Arrays.asList(answersArr));
         Question question = new Question(questionText, answerList);
         Database.getInstance().addQuestion(question);
         Database.getInstance().saveDatabase();
