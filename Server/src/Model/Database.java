@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database implements Serializable {
+    private Integer questionIndex;
     private static Database ourInstance = Database.loadDatabase();
     private List<Question> questions;
     private List<User> users;
@@ -13,12 +14,18 @@ public class Database implements Serializable {
         return ourInstance;
     }
 
+    public Integer getQuestionIndex() {
+        return questionIndex;
+    }
+
     private Database() {
+        questionIndex = 0;
         this.users = new ArrayList<>();
         this.questions = new ArrayList<>();
     }
 
     public List<Question> getQuestions() {
+        questionIndex++;
         return questions;
     }
 

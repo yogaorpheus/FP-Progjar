@@ -3,7 +3,9 @@ package Application;
 import Controller.QuestionController;
 import Model.Question;
 import Model.User;
+import Util.MessageGenerator;
 import ViewTemp.CommandCenter;
+import sun.awt.windows.ThemeReader;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -68,9 +70,25 @@ public class Quiz extends Thread{
         isActive = false;
     }
 
+    private class QuizTimer extends Thread {
+        public QuizTimer() {}
+
+        public void run() {
+            try {
+                sleep(10000);
+                if (Quiz.getInstance().status()) {
+                    Quiz.getInstance().refreshQuestion();
+                    Broadcaster.getInstance().broadcast(MessageGenerator.activeQuestion(Quiz.getInstance().getActiveQuestion(), Quiz.getInstance().getUsersAnswer()));
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void refreshQuestion() {
         activeQuestion = QuestionController.getRandom();
         usersAnswer.clear();
+        new QuizTimer().start();
     }
-
 }

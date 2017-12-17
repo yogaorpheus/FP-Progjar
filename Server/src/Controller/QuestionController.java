@@ -16,9 +16,7 @@ public class QuestionController {
     }
 
     public static Question getRandom() {
-        Random rand = new Random();
-        rand.setSeed(5653);
         List<Question> questionList = Database.getInstance().getQuestions();
-        return questionList.get(rand.nextInt(questionList.size()));
+        return questionList.get(Database.getInstance().getQuestionIndex() % questionList.size());
     }
 }
