@@ -15,7 +15,7 @@ import java.net.InetAddress;
 public class Handler {
     public static void message(String senderName, String message) {
         Broadcaster.getInstance().broadcast(senderName + ": " + message);
-        message.toLowerCase();
+        message = message.toLowerCase();
         Quiz quiz = Quiz.getInstance();
         if (message.equals("/mulai")) {
             if (quiz.status()) {
@@ -39,7 +39,7 @@ public class Handler {
         if (message.equals("/score")) {
             String sendMessage = "Daftar nilai user yang online\n";
             for (User user: quiz.getActiveUser()) {
-                sendMessage += user.getUsername() + " -> " + user.getPoints().toString() + " points";
+                sendMessage += user.getUsername() + " -> " + user.getPoints().toString() + " points\n";
             }
             Broadcaster.getInstance().broadcast(sendMessage);
         }
@@ -60,11 +60,11 @@ public class Handler {
         String password = data.split(";")[1];
         System.out.println("register for" + username + "->" + password + "from ->" + address.toString() + " on port: " + port.toString());
         if (UserController.findByName(username)!= null) {
-            String message = "fail;Username already used";
+            String message = "register;fail;Username already used";
             SenderSingle.getInstance().sendMessage(message, address, port);
         } else {
             UserController.register(username, password);
-            String message = "success;User created, please login";
+            String message = "register;success;User created, please login";
             SenderSingle.getInstance().sendMessage(message, address, port);
         }
     }
@@ -74,14 +74,14 @@ public class Handler {
         String password = data.split(";")[1];
         User user = UserController.findByName(username);
         if (user == null) {
-            String message = "fail;user not found";
+            String message = "login;fail;user not found";
             SenderSingle.getInstance().sendMessage(message, address, port);
         } else if (user.getPassword().equals(password)){
-            String message = "success;Login success";
+            String message = "login;success;Login success";
             Quiz.getInstance().addActiveUser(user);
             SenderSingle.getInstance().sendMessage(message, address, port);
         } else {
-            String message = "fail;Wrong password";
+            String message = "login;fail;Wrong password";
             SenderSingle.getInstance().sendMessage(message, address, port);
         }
     }

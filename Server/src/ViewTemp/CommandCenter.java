@@ -30,11 +30,11 @@ public class CommandCenter extends javax.swing.JFrame {
         questionField = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         answerField = new javax.swing.JTextArea();
-        submitQuestionButton = new javax.swing.JToggleButton();
+        submitQuestionButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        serverPowerButton = new javax.swing.JToggleButton();
+        serverPowerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -150,9 +150,9 @@ public class CommandCenter extends javax.swing.JFrame {
         Database database = Database.getInstance();
     }
 
-    /**
-     * @param args the command line arguments
-     */
+//    /**
+//     * @param args the command line arguments
+//     */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -182,7 +182,7 @@ public class CommandCenter extends javax.swing.JFrame {
     public void updateActiveUserList(Set<User> users) {
         String userText = "";
         for (User user: users) {
-            userText += user.getUsername() + '\n';
+            userText += user.getUsername() + ", ";
         }
         activeUserField.setText(userText);
     }
@@ -197,7 +197,7 @@ public class CommandCenter extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea questionField;
-    private javax.swing.JToggleButton serverPowerButton;
-    private javax.swing.JToggleButton submitQuestionButton;
+    private javax.swing.JButton serverPowerButton;
+    private javax.swing.JButton submitQuestionButton;
     // End of variables declaration
 }
