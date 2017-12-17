@@ -16,6 +16,7 @@ public class GUI_LogIN extends javax.swing.JFrame {
      */
     public GUI_LogIN() {
         initComponents();
+        this.setSize(425,370);
     }
 
     /**
