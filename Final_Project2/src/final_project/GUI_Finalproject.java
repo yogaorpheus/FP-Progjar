@@ -16,6 +16,7 @@ public class GUI_Finalproject extends javax.swing.JFrame {
      */
     public GUI_Finalproject() {
         initComponents();
+        this.setSize(425,370);
     }
 
     /**
