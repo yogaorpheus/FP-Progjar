@@ -16,6 +16,7 @@ public class Tambah_Soal extends javax.swing.JFrame {
      */
     public Tambah_Soal() {
         initComponents();
+        this.setSize(425,370);
     }
 
     /**

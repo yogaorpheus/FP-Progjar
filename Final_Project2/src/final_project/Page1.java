@@ -15,6 +15,7 @@ public class Page1 extends javax.swing.JFrame {
      * Creates new form Page1
      */
     public Page1() {
+        this.setSize(425,370);
         initComponents();
     }
 

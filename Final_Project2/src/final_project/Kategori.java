@@ -16,6 +16,7 @@ public class Kategori extends javax.swing.JFrame {
      */
     public Kategori() {
         initComponents();
+        this.setSize(425,370);
     }
 
     /**

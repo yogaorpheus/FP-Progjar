@@ -16,6 +16,7 @@ public class MainPage extends javax.swing.JFrame {
      */
     public MainPage() {
         initComponents();
+        this.setSize(425,370);
     }
 
     /**
@@ -102,7 +103,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(9, 82, 155));
         jLabel3.setText("Santai");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(150, 100, 98, 39);
+        jLabel3.setBounds(150, 100, 100, 47);
 
         jToggleButton1.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
         jToggleButton1.setText("Play Game");
@@ -146,7 +147,7 @@ public class MainPage extends javax.swing.JFrame {
         getContentPane().add(jTextField1);
         jTextField1.setBounds(150, 140, 106, 28);
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 0, 410, 330);
+        jLabel5.setBounds(0, 0, 0, 0);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/final_project/background.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");

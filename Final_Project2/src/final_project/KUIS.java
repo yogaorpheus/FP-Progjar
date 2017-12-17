@@ -16,6 +16,7 @@ public class KUIS extends javax.swing.JFrame {
      */
     public KUIS() {
         initComponents();
+        this.setSize(425,370);
     }
 
     /**

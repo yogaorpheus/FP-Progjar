@@ -6,7 +6,7 @@
 package final_project;
 
 /**
- *
+ * 
  * @author ASUS
  */
 public class SCORE extends javax.swing.JFrame {
@@ -16,6 +16,7 @@ public class SCORE extends javax.swing.JFrame {
      */
     public SCORE() {
         initComponents();
+        this.setSize(425,370);
     }
 
     /**
